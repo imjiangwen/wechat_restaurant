@@ -13,10 +13,10 @@ $ ionic start wechat_restaurant tutorial --v2
 
 ## third（然后）:
 
-find local file: /wechat_restaurant , then 
-delete all files except on /node_modules in /wechat_restaurant , then 
-copy all files downloaded here into /wechat_restaurant
-找到刚刚安在本地的项目wechat_restaurant文件夹，删除除了node_modules文件夹以外的所有文件，复制从这里下载的所有文件到项目wechat_restaurant中
+ find local file: /wechat_restaurant , 
+<br /> then delete all files except on /node_modules in /wechat_restaurant , 
+<br /> then copy all files downloaded here into /wechat_restaurant
+<br /> 找到刚刚安在本地的项目wechat_restaurant文件夹，删除除了node_modules文件夹以外的所有文件，复制从这里下载的所有文件到项目wechat_restaurant中
 ## finally（最后）:
 
 ```bash
