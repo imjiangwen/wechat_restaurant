@@ -4,7 +4,7 @@ Run this Project
 
 ## first
 
-make sure your computer installed ionic
+make sure your computer install ionic
 
 ## second:
 
