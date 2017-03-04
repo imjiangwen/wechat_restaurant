@@ -28,6 +28,11 @@ $ npm install jquery
 ```bash
 $ ionic serve
 ```
-
+## result:
+![1](http://oma2qb194.bkt.clouddn.com/1.png)
+![2](http://oma2qb194.bkt.clouddn.com/1.png)
+![3](http://oma2qb194.bkt.clouddn.com/1.png)
+![4](http://oma2qb194.bkt.clouddn.com/1.png)
+......
 
 
