@@ -1,0 +1,84 @@
+<ion-header id="header"  style="padding: 0;margin: 0;border: 0;">
+  <ion-navbar style="padding: 0;margin: 0;border: 0;">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>菜单点餐</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content overflow-scroll="false"  style="padding: 0;margin: 0;border: 0;">
+	<!-- 菜单类型 -->
+	<div style="float: left;width: 25%;border: 0;height: 100%;overflow-y: scroll;background: #f1f1f1">
+		<ul class="sortlist">	
+			<!-- 菜品类型 -->
+			<li  [ngClass]="{active:isAllFood}"  (click)="clickType('all')" type="type_all"><h4>所有菜品</h4></li>
+			<li  (click)="clickType(ft.typeId)" [ngClass]="{active:ft.isActive}"  *ngFor="let ft of foodType" type="{{ft.typeId}}" ><h4>{{ft.typeName}}</h4></li>
+		</ul>
+	</div>
+
+<!-- 详细菜单 -->
+	<div style="float: left;width: 75%;border: 0;height: 100%;overflow: hidden;">
+		<!-- 查询 -->
+		<ion-searchbar id="search-food" height="46px" placeholder="搜索菜品" showCancelButton="true" cancelButtonText="清除"  (ionInput)="searchFood($event)"></ion-searchbar>
+		<!-- 菜单 -->
+		<div class="foodType" id="foodScroll" style="height: 100%;overflow-y: scroll;" (scroll)="scrollType($event)">	
+		 	<ion-list *ngFor="let t of foodType" id="{{t.typeId}}">
+		 	  <ion-item style="padding-left: 5px;padding-right: 0" *ngFor="let p of t.foods" >
+		 	    <ion-thumbnail item-left style="margin-right: 8px;">
+		 	      <img src="assets/imgs/thumbnail-totoro.png" (click)="showBigImg('assets/imgs/thumbnail-totoro.png',p.foodName)">
+		 	    </ion-thumbnail>
+		 	    <h4>{{p.foodName}}</h4>
+		 	    <p>已售 {{p.foodSV}}</p>
+		 	    <label style="font-size: 12px;">￥{{p.foodPrice}}/份</label>
+		 	    <div style="float: right;">
+			 	    <ion-icon tappable name="remove-circle" style="font-size: 30px;color: #ccc;" (tap)="cartRemove(p.foodId)"></ion-icon>
+			 	    <span style="display: inline-block;width: 20px;text-align:center;">
+				 	    <ul  *ngFor="let o of orderInfo.eachFood">
+				 	    	<li *ngIf="o.foodInfo.foodId==p.foodId">{{o.sum}}</li>
+				 	    </ul>
+			 	    </span>
+			 	    <ion-icon tappable name="add-circle" style="color: red;font-size:30px;" (tap)="cartAdd($event,p.foodId)"></ion-icon>
+				</div>	
+		 	  </ion-item>
+		 	</ion-list>
+		</div>
+	</div>
+
+
+<!-- 查看放大图片 -->
+	<div id="rightDisplay" *ngIf="bigImg" style="position: fixed;top: 0;left: 0;z-index: 10; width: 100%;height: 100%;border: 0;">
+		<div style="background: #ccc;filter:alpha(Opacity=80);-moz-opacity:0.5;opacity: 0.5;width: 100%;height: 100%;"></div>
+	    <ion-card style="position: absolute;top: 8%;">
+	      <h2 style="margin-left: 15px;">
+	      	<span style="font-size: 10px;">点击图片可缩回</span>
+	      </h2>
+	      <img src="{{imgUrl}}" (click)="hideBigImg()" style="min-height: 150px;width: 100%;">
+	      <ion-card-content style="overflow-y: scroll;max-height: 65px;">
+	        <p>{{imgName}}:这是一道含有高蛋白、低脂肪、低胆固醇肉类。</p>
+	      </ion-card-content>
+	    </ion-card>
+	</div>
+
+</ion-content>
+
+<!-- 底部购物车栏 -->
+<ion-footer style="height: 55px;background: white;border-top: 1px solid #f1f1f1;">
+	  <ion-row center style="padding: 0;margin: 0;border: 0;">
+	    <ion-col width-20 center style="padding: 0;margin: 0;border: 0;">
+	    	<div class="ocart" (click)="presentCartPage()">
+	    		<i class="icon iconfont text-white"  style="vertical-align:middle;font-size:2em;margin-left: 12px;">
+	    			<ion-icon name="cart" id="ocartIcon" style="font-size: 30px;"></ion-icon>
+	    		</i>
+	    		<div class="allnum" id="allnum">{{orderInfo.tSum}}</div>
+	    	</div>
+	    </ion-col>
+	    <ion-col width-50 center style="padding: 0;margin: 0;border: 0;" (click)="presentCartPage()">
+	    	<h3 id="tPrice">￥{{orderInfo.tPrice}}</h3>
+	    </ion-col>
+	    <ion-col width-30 center style="padding: 0;margin: 0;border: 0;">
+	    	<button ion-button color="danger" style="margin: 0;border: 0;padding: 0;width: 100%;height: 55px;" (click)="openConfirmOrder()">选好了</button>
+	    </ion-col>
+	  </ion-row>
+</ion-footer>

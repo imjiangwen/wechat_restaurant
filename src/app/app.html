@@ -1,0 +1,46 @@
+<ion-menu [content]="content">
+
+  
+
+  <ion-content [ngClass]="{theme1:isTheme1,theme2:isTheme2}">
+
+    <ion-item class="padding-left-0-5" [ngClass]="{theme1:isTheme1,theme2:isTheme2}">
+
+      <ion-grid>
+          <ion-row center>
+            <ion-col width-20>
+              <img src="assets/icon/favicon.ico" class="header-img" />
+            </ion-col>
+            <ion-col width-30>
+              <h2>Mosquito</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <img src="assets/imgs/xing.gif" class="" />
+            <img src="assets/imgs/xing.gif" class="" />
+            <img src="assets/imgs/xing.gif" class="" />
+          </ion-row>
+          <ion-row>
+            <p>wifi在线</p>
+          </ion-row>
+      </ion-grid>
+      
+    </ion-item>
+
+    <ion-list>
+      <button ion-item  *ngFor="let p of pages" (tap)="openPage(p)">
+        {{p.title}}
+      </button>
+      <ion-item>
+        <ion-label>换个风格</ion-label>
+        <ion-toggle [(ngModel)]="isTheme1" (ionChange)="changeTheme()"></ion-toggle>
+      </ion-item>
+    </ion-list>
+   
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false" tappable></ion-nav>
+
+

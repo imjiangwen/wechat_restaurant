@@ -1,0 +1,61 @@
+<ion-header style="padding: 0;margin: 0;border: 0;">
+  <ion-toolbar >
+    <ion-title>
+      购物车
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (tap)="dismiss()" icon-only>
+      	<ion-icon name="close"></ion-icon>关闭
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (tap)="clearCart()" icon-only>
+      	<ion-icon name="trash" ></ion-icon>清空
+      </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background: #efeff4;">
+  <ion-list>
+      <ion-list-header>
+        已选菜品(左滑列表可选择菜品口味或删除该菜品)
+      </ion-list-header>
+
+      <ion-item-sliding  *ngFor="let o of orderInfoCart">
+        <ion-item>
+            <ion-row center>
+              <ion-col width-30  style="text-align: left;font-size: 16px;">{{o.foodInfo.foodName}}</ion-col>
+              <ion-col width-40  style="text-align: left;font-size: 16px;">￥{{o.tPrice}}</ion-col>
+              <ion-col width-30  style="text-align: center;">
+                  <ion-icon tappable name="remove-circle"  style="font-size: 30px;color: #ccc;" (tap)="cartRemove(o.foodInfo.foodId)"></ion-icon>
+                    <span style="display: inline-block;width: 22px;text-align:center;font-size: 16px;">
+                      {{o.sum}}
+                    </span>
+                  <ion-icon tappable name="add-circle" style="color: red;font-size:30px;" (tap)="cartAdd(o.foodInfo.foodId)"></ion-icon>
+              </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item-options>
+          <button ion-button color="danger" icon-left (tap)="deleteFood(o.foodInfo.foodId);">
+            删除
+          </button>
+          <button ion-button color="primary" icon-left (tap)="markFood(o.foodInfo.foodId,o.foodInfo.foodName);">
+            口味备注
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>
+	
+
+</ion-content>
+
+
+<ion-footer style="height: 30px;background: white;border-top: 1px solid #f1f1f1;">
+    <ion-row center>
+      <ion-col width-30 style="text-align: center;">总计</ion-col>
+      <ion-col width-40 style="text-align: center;">￥{{params.data.tPrice}}</ion-col>
+      <ion-col width-30 style="text-align: center;">{{params.data.tSum}}</ion-col>
+    </ion-row>
+</ion-footer>
