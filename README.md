@@ -22,6 +22,7 @@ $ ionic serve
 ```
 ## result（结果预览）:
 ![1](http://oma2qb194.bkt.clouddn.com/1.png)
+![5](http://oma2qb194.bkt.clouddn.com/5.png)
 ![2](http://oma2qb194.bkt.clouddn.com/2.png)
 ![3](http://oma2qb194.bkt.clouddn.com/3.png)
 ![4](http://oma2qb194.bkt.clouddn.com/4.png)
