@@ -1,20 +1,32 @@
-Ionic 2 App Base
+Run this Project
 =====================
 
-This is the base template for Ionic 2 starter apps.
 
-## Using this project
+## first
 
-You'll need the Ionic CLI with support for v2 apps:
+make sure your computer installed ionic
 
-```bash
-$ npm install -g ionic
-```
-
-Then run:
+## second:
 
 ```bash
-$ ionic start myApp
+$ ionic start wechat_restaurant tutorial --v2
 ```
 
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/docs/v2/getting-started/) page.
+## third:
+
+find local file: /wechat_restaurant
+delete all files except on /tutorial in /wechat_restaurant
+copy all files downloaded here into /wechat_restaurant
+
+## then:
+
+```bash
+$ npm install
+```
+
+```bash
+$ ionic serve
+```
+
+
+
