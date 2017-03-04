@@ -22,6 +22,7 @@ copy all files downloaded here into /wechat_restaurant
 
 ```bash
 $ npm install
+$ npm install jquery
 ```
 
 ```bash
